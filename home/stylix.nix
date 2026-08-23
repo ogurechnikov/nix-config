@@ -15,6 +15,5 @@
   stylix.targets = {
     alacritty.enable = true;
     neovim.enable = true;
-    emacs.enable = true;
   };
 }
