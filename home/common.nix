@@ -12,6 +12,7 @@
     ./quickshell.nix
     ./git.nix
     ./firefox.nix
+    ./vpn
   ];
 
   programs.home-manager.enable = true;

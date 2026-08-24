@@ -10,13 +10,14 @@ in
         keyboard {
             xkb {
                 layout "us,ru"
-                options "grp:super_space_toggle"
+                options "grp:win_space_toggle"
             }
         }
     }
 
     binds {
         Mod+Return { spawn "alacritty"; }
+        Mod+B {spawn "firefox"}
         Mod+Q { close-window; }
     }
   '';
