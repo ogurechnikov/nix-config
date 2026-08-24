@@ -44,7 +44,8 @@
   };
 
   programs.git.enable = true;
-
+  programs.amnezia-vpn.enable = true;
+  
   services.pipewire = {
     enable = true;
     alsa.enable = true;

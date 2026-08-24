@@ -17,8 +17,9 @@ in
 
     binds {
         Mod+Return { spawn "alacritty"; }
-        Mod+B {spawn "firefox"}
+        Mod+B { spawn "firefox" }
         Mod+Q { close-window; }
+        Mod+F { toglle-windowed-fullscreen; }
     }
   '';
 }
