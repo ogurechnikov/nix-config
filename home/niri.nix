@@ -3,7 +3,7 @@ let
   homeDir = config.home.homeDirectory;
 in
 {
-  home.file.".config/niri-nix/config.kdl".text = ''
+  home.file.".config/niri/config.kdl".text = ''
     spawn-at-startup "quickshell" "-c" "${homeDir}/.config/quickshell/shell.qml"
 
     input {

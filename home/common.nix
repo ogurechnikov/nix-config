@@ -3,7 +3,7 @@
   home.username = "so";
   home.homeDirectory = "/home/so";
   home.stateVersion = "26.05";
-  
+
   imports = [
     ./emacs.nix
     ./alacritty.nix
@@ -14,5 +14,4 @@
   ];
 
   programs.home-manager.enable = true;
-  targets.genericLinux.enable = true;
 }
