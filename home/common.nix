@@ -10,7 +10,7 @@
     ./neovim.nix
     ./niri.nix
     ./quickshell.nix
-    ./stylix.nix
+    ./git.nix
   ];
 
   programs.home-manager.enable = true;

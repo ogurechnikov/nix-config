@@ -10,7 +10,7 @@ in
         keyboard {
             xkb {
                 layout "us,ru"
-                options "grp:alt_shift_toggle"
+                options "grp:super_space_toggle"
             }
         }
     }

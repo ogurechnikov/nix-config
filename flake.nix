@@ -32,7 +32,6 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/nixos-desktop/configuration.nix
-        niri.nixosModules.niri
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
       ];

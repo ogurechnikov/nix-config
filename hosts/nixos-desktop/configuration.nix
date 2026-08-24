@@ -43,8 +43,7 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  services.displayManager.gdm.enable = true;
-  services.displayManager.gdm.wayland = true;
+  programs.git.enable = true;
 
   services.pipewire = {
     enable = true;
