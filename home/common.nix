@@ -11,6 +11,7 @@
     ./niri.nix
     ./quickshell.nix
     ./git.nix
+    ./firefox.nix
   ];
 
   programs.home-manager.enable = true;
