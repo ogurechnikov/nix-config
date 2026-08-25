@@ -3,8 +3,13 @@
   stylix.enable = true;
   stylix.polarity = "dark";
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
-  # stylix.base16Scheme = "default-dark";
- 
+
+  stylix.cursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+  };
+
   stylix.fonts = {
     monospace = {
       package = pkgs.nerd-fonts.jetbrains-mono;
@@ -14,8 +19,8 @@
   };
 
   stylix.targets = {
-    # alacritty.enable = true;
-    # neovim.enable = true;
-    # fuzzel.enable = true;
+    alacritty.enable = true;
+    neovim.enable = true;
+    fuzzel.enable = true;
   };
 }
