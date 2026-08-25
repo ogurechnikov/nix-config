@@ -12,6 +12,7 @@
     ./quickshell.nix
     ./git.nix
     ./firefox.nix
+    ./fuzzel.nix
   ];
 
   programs.home-manager.enable = true;
