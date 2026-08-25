@@ -19,7 +19,6 @@
 (eval-when-compile
   (require 'use-package))
 
-
 ;;; ---------------------------------------------------------------------------
 ;;; UI
 ;;; ---------------------------------------------------------------------------
@@ -45,6 +44,13 @@
   :ensure t
   :bind
   (("C-c d" . dired-sidebar-toggle-sidebar)))
+
+;;; ---------------------------------------------------------------------------
+;;; Theme
+;;; ---------------------------------------------------------------------------
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'dynamic-base16 t)
 
 ;;; ---------------------------------------------------------------------------
 ;;; Files
@@ -233,7 +239,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(dank-emacs))
  '(custom-safe-themes
    '("56ea9bccc9cbbe6a2eed5f3472914875e44bbc8f58d14885ada18ec22125844d"
 	 "a10be2cb039228828c243dd66ad4e76a1cac691d001ea4e6d7e3dfe6a55b0d17"

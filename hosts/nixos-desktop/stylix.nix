@@ -17,10 +17,4 @@
     };
     sizes.terminal = 11;
   };
-
-  stylix.targets = {
-    alacritty.enable = true;
-    neovim.enable = true;
-    fuzzel.enable = true;
-  };
 }

@@ -6,6 +6,7 @@
 
   imports = [
     ./emacs.nix
+    ./emacs-theme.nix
     ./alacritty.nix
     ./neovim.nix
     ./niri.nix
@@ -13,6 +14,7 @@
     ./git.nix
     ./firefox.nix
     ./fuzzel.nix
+    ./stylix-targets.nix
   ];
 
   programs.home-manager.enable = true;
