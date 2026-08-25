@@ -59,7 +59,6 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = { inherit inputs; };
-  home-manager.backupFileExtension = "backup";
   home-manager.users.so = import ../../home/common.nix;
 
   system.stateVersion = "26.05";
