@@ -15,6 +15,7 @@
     ./firefox.nix
     ./fuzzel.nix
     ./stylix-targets.nix
+    ./dev.nix
   ];
 
   programs.home-manager.enable = true;

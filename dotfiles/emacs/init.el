@@ -162,6 +162,10 @@
   :hook
   (nix-mode . eglot-ensure))
 
+(add-hook 'nix-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'eglot-format nil t)))
+
 ;;; ---------------------------------------------------------------------------
 ;;; Go
 ;;; ---------------------------------------------------------------------------
@@ -190,6 +194,22 @@
 
 (global-set-key (kbd "C-c t") #'my/go-test)
 
+;;; ---------------------------------------------------------------------------
+;;; Python
+;;; ---------------------------------------------------------------------------
+
+(use-package python
+  :ensure nil
+  :hook
+  (python-mode . eglot-ensure)
+  (python-mode . my/python-mode-setup))
+
+(defun my/python-mode-setup ()
+  "Configure Python buffers."
+  (add-hook 'before-save-hook
+            'eglot-format
+            nil
+            t))
 
 ;;; ---------------------------------------------------------------------------
 ;;; Common Lisp
