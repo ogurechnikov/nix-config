@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
   programs.fuzzel = {
     enable = true;
@@ -6,12 +6,21 @@
       main = {
         terminal = "alacritty";
         layer = "overlay";
-        width = 40;
-        lines = 10;
+        width = 60;
+        lines = 8;
+        horizontal-pad = 24;
+        vertical-pad = 16;
+        inner-pad = 12;
+        font = "JetBrainsMono Nerd Font:size=16";
+        icon-theme = "Adwaita";
+        icons-enabled = true;
+        dpi-aware = "auto";
       };
       border = {
-        width = 2;
-        radius = 8;
+        width = 0;
+        radius = 16;
+      };
+      colors = {
       };
     };
   };

@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -15,7 +20,11 @@
 
   users.users.so = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
   };
 
   virtualisation.docker.enable = true;
@@ -43,6 +52,16 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.niri}/bin/niri-session";
+        user = "so";
+      };
+    };
+  };
+
   programs.git.enable = true;
   programs.amnezia-vpn.enable = true;
   services.pipewire = {
@@ -54,8 +73,8 @@
 
   networking.firewall.enable = true;
 
-  nixpkgs.config.allowUnfree = true;  # обязательно для NVIDIA-драйвер
-  
+  nixpkgs.config.allowUnfree = true; # обязательно для NVIDIA-драйвер
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = { inherit inputs; };
