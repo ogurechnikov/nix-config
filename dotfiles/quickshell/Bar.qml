@@ -24,10 +24,7 @@ PanelWindow {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
 
-            Text {
-                text: "workspaces"
-                color: "#cdd6f4"
-            }
+			Workspaces {}
         }
 		
 		// Center
