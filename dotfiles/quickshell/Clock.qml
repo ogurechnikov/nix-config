@@ -3,7 +3,6 @@ import QtQuick
 
 Item {
     id: root
-
     property string time: ""
 
     readonly property var monthNames: [
@@ -16,10 +15,8 @@ Item {
         var day = now.getDate()
         var month = monthNames[now.getMonth()]
         var year = now.getFullYear()
-
         var hours = String(now.getHours()).padStart(2, "0")
         var minutes = String(now.getMinutes()).padStart(2, "0")
-
         root.time = day + " " + month + " " + year + ", " + hours + ":" + minutes
     }
 
@@ -33,11 +30,12 @@ Item {
     Component.onCompleted: root.updateTime()
 
     Text {
+        id: clockText
         anchors.verticalCenter: parent.verticalCenter
         text: root.time
         color: "#cdd6f4"
     }
 
-    implicitWidth: childrenRect.width
-    implicitHeight: childrenRect.height
+    implicitWidth: clockText.implicitWidth
+    implicitHeight: clockText.implicitHeight
 }
