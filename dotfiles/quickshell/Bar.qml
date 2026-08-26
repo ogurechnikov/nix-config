@@ -14,30 +14,36 @@ PanelWindow {
 	implicitHeight: 36
 	color: "#1e1e2e"
 
-	RowLayout {
+	Item {
 		anchors.fill: parent
 		anchors.leftMargin: 12
 		anchors.rightMargin: 12
 
 		// Left
-		Text {
-			text: "workspaces"
-			color: "#cdd6f4"
-			Layout.alignment: Qt.AlignVCenter
-		}
+		RowLayout {
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
 
-		Item { Layout.fillWidth: true }
-
+            Text {
+                text: "workspaces"
+                color: "#cdd6f4"
+            }
+        }
+		
 		// Center
 		Clock {
-			Layout.alignment: Qt.AlignVCenter
+			anchors.centerIn: parent
 		}
 
 		// Right
-		Text {
-			text: "wifi | en | 🔔 | ⏻"
-            color: "#cdd6f4"
-            Layout.alignment: Qt.AlignVCenter
+		RowLayout {
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+
+            Text {
+                text: "wifi | en | 🔔 | ⏻"
+                color: "#cdd6f4"
+            }
 		}
 	}
 }
