@@ -1,6 +1,6 @@
 // Bar.qml - компонент top bar.
 
-import QuickShell
+import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
