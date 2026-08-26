@@ -6,6 +6,7 @@
     ./dev/rust.nix
     ./dev/nix-lang.nix
     ./dev/python.nix
+    ./dev/qml.nix
     ./dev/tools.nix
   ];
 }

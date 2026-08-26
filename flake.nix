@@ -16,22 +16,34 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-qml-support = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/nix-qml-support";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, quickshell, stylix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      niri,
+      quickshell,
+      stylix,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
     in
-      {
-        nixosConfigurations."nixos-desktop" = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/nixos-desktop/configuration.nix
-            ./hosts/nixos-desktop/stylix.nix
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-          ];
-        };
+    {
+      nixosConfigurations."nixos-desktop" = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/nixos-desktop/configuration.nix
+          ./hosts/nixos-desktop/stylix.nix
+          stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+        ];
       };
+    };
 }

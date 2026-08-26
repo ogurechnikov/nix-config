@@ -250,8 +250,17 @@
 
 (global-set-key (kbd "C-c C-d") #'duplicate-line)
 
-;;; Temp QML
-(add-to-list 'auto-mode-alist '("\\.qml\\'" . js-mode))
+;;; ---------------------------------------------------------------------------
+;;; QML / Quickshell
+;;; ---------------------------------------------------------------------------
+
+(use-package qml-ts-mode
+  :mode "\\.qml\\'"
+  :hook
+  (qml-ts-mode . eglot-ensure)
+  :config
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs '(qml-ts-mode . ("qmlls" "-E")))))
 
 ;;; ---------------------------------------------------------------------------
 ;;; Custom system etc

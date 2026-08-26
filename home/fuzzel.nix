@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.fuzzel = {
     enable = true;
@@ -11,7 +11,7 @@
         horizontal-pad = 24;
         vertical-pad = 16;
         inner-pad = 12;
-        font = "JetBrainsMono Nerd Font:size=16";
+        font = lib.mkForce "JetBrainsMono Nerd Font:size=16";
         icon-theme = "Adwaita";
         icons-enabled = true;
         dpi-aware = "auto";
@@ -19,8 +19,6 @@
       border = {
         width = 0;
         radius = 16;
-      };
-      colors = {
       };
     };
   };
