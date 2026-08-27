@@ -8,22 +8,15 @@ import Quickshell
 PanelWindow {
     anchors {
         bottom: true
+		left: true
+		right: true
     }
 
-    implicitHeight: 50
-    color: "#1e1e2e"
+    implicitHeight: 64
+    color: "transparent"
 
     property var windows: []
-
-    readonly property int minIconSize: 20
-    readonly property int maxIconSize: 30
-
-    readonly property int iconSize: {
-        if (windows.length === 0) return maxIconSize
-        var available = 600
-        var computed = Math.floor(available / windows.length) - 8
-        return Math.max(minIconSize, Math.min(maxIconSize, computed))
-    }
+	property int iconSize: 30
 
     Process {
         id: windowsProcess
@@ -44,38 +37,69 @@ PanelWindow {
         onTriggered: windowsProcess.running = true
     }
 
-    RowLayout {
-        anchors.centerIn: parent
-        spacing: 8
+	Process {
+		id: focusProcess
+	}
 
-        Repeater {
-            model: windows
+	Rectangle {
+        id: dockBackground
 
-            Item {
-                implicitWidth: iconSize
-                implicitHeight: iconSize
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 8
 
-                IconImage {
-                    id: icon
-                    anchors.fill: parent
-                    source: {
-                        var entry = DesktopEntries.byId(modelData.app_id)
-                        return entry ? Quickshell.iconPath(entry.icon) : ""
+        width: rowLayout.implicitWidth + 24
+        height: 48
+
+        radius: 16
+        color: "#1e1e2e"
+        border.width: 2
+        border.color: "#585b70"
+
+        RowLayout {
+            id: rowLayout
+            anchors.centerIn: parent
+            spacing: 10
+
+            Repeater {
+                model: windows
+
+                Item {
+                    id: iconSlot
+                    implicitWidth: iconSize + 12
+                    implicitHeight: iconSize + 12
+
+                    Rectangle {
+                        id: hoverBackground
+                        anchors.fill: parent
+                        radius: 10
+                        color: mouseArea.containsMouse ? "#45475a" : "transparent"
+
+                        Behavior on color {
+                            ColorAnimation { duration: 150 }
+                        }
                     }
-                }
 
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        focusProcess.command = ["niri", "msg", "action", "focus-window", "--id", String(modelData.id)]
-                        focusProcess.running = true
+                    IconImage {
+                        anchors.centerIn: parent
+                        implicitSize: iconSize
+                        source: {
+                            var entry = DesktopEntries.byId(modelData.app_id)
+                            return entry ? Quickshell.iconPath(entry.icon) : ""
+                        }
+                    }
+
+                    MouseArea {
+                        id: mouseArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onClicked: {
+                            focusProcess.command = ["niri", "msg", "action", "focus-window", "--id", String(modelData.id)]
+                            focusProcess.running = true
+                        }
                     }
                 }
             }
         }
-    }
-
-    Process {
-        id: focusProcess
     }
 }
