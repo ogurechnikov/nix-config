@@ -29,8 +29,12 @@ PanelWindow {
         RowLayout {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
+			spacing: 12
+
+			Keyboard {}
+			
             Text {
-                text: "wifi | en | 🔔 | ⏻"
+                text: "wifi | 🔔 | ⏻"
                 color: Colors.base05
             }
         }
