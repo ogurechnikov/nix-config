@@ -5,5 +5,9 @@
     fd
     jq
     tree
+    cmake
+    gcc
+    gnumake
+    libtool
   ];
 }
