@@ -42,7 +42,7 @@ Item {
                 height: 10
                 radius: 5
 
-                color: modelData.is_active ? Colors.base02 : Colors.base0D
+                color: modelData.is_active ? Colors.base0D : Colors.base02
             }
         }
     }
