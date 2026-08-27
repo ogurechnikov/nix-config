@@ -25,7 +25,10 @@
       "networkmanager"
       "docker"
     ];
+    shell = pkgs.fish;
   };
+
+  environment.shells = with pkgs; [ fish ];
 
   virtualisation.docker.enable = true;
 
@@ -69,6 +72,9 @@
     alsa.enable = true;
     pulse.enable = true;
   };
+
+  programs.fish.enable = true;
+
   security.rtkit.enable = true;
 
   networking.firewall.enable = true;

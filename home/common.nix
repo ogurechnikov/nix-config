@@ -17,6 +17,7 @@
     ./fuzzel.nix
     ./stylix-targets.nix
     ./dev.nix
+    ./fish.nix
   ];
 
   programs.home-manager.enable = true;
