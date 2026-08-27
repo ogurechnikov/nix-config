@@ -33,7 +33,7 @@ Item {
         id: clockText
         anchors.verticalCenter: parent.verticalCenter
         text: root.time
-        color: "#cdd6f4"
+        color: Colors.base05
     }
 
     implicitWidth: clockText.implicitWidth

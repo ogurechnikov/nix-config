@@ -1,46 +1,38 @@
-// Bar.qml - компонент top bar.
-
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
 PanelWindow {
-	anchors {
-		top: true
-		left: true
-		right: true
-	}
+    anchors {
+        top: true
+        left: true
+        right: true
+    }
+    implicitHeight: 36
+    color: Colors.base00
 
-	implicitHeight: 36
-	color: "#1e1e2e"
+    Item {
+        anchors.fill: parent
+        anchors.leftMargin: 12
+        anchors.rightMargin: 12
 
-	Item {
-		anchors.fill: parent
-		anchors.leftMargin: 12
-		anchors.rightMargin: 12
-
-		// Left
-		RowLayout {
+        RowLayout {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-
-			Workspaces {}
+            Workspaces {}
         }
-		
-		// Center
-		Clock {
-			anchors.centerIn: parent
-		}
 
-		// Right
-		RowLayout {
+        Clock {
+            anchors.centerIn: parent
+        }
+
+        RowLayout {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-
             Text {
                 text: "wifi | en | 🔔 | ⏻"
-                color: "#cdd6f4"
+                color: Colors.base05
             }
-		}
-	}
+        }
+    }
 }

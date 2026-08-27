@@ -52,9 +52,9 @@ PanelWindow {
         height: 48
 
         radius: 16
-        color: "#1e1e2e"
+        color: Colors.base00
         border.width: 2
-        border.color: "#585b70"
+        border.color: Colors.base02
 
         RowLayout {
             id: rowLayout
@@ -73,7 +73,7 @@ PanelWindow {
                         id: hoverBackground
                         anchors.fill: parent
                         radius: 10
-                        color: mouseArea.containsMouse ? "#45475a" : "transparent"
+                        color: mouseArea.containsMouse ? Colors.base01 : "transparent"
 
                         Behavior on color {
                             ColorAnimation { duration: 150 }

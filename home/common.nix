@@ -11,6 +11,7 @@
     ./neovim.nix
     ./niri.nix
     ./quickshell.nix
+    ./quickshell-theme.nix
     ./git.nix
     ./firefox.nix
     ./fuzzel.nix
