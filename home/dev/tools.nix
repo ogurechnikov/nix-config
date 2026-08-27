@@ -4,6 +4,7 @@
     ripgrep
     fd
     jq
+    bat
     tree
     cmake
     gcc
