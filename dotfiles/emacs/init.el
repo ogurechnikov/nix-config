@@ -115,6 +115,18 @@
    ("C-x C-r" . consult-recent-file)
    ("M-y" . consult-yank-from-kill-ring)))
 
+;;; ---------------------------------------------------------------------------
+;;; Vterm
+;;; ---------------------------------------------------------------------------
+
+(use-package vterm
+  :ensure t
+  :commands vterm
+  :custom
+  (vterm-max-scrollback 10000)
+  (vterm-shell "fish")
+  :config
+  (setq vterm-buffer-name-string "vterm: %s"))
 
 ;;; ---------------------------------------------------------------------------
 ;;; Projects
@@ -191,8 +203,6 @@
   "Run Go tests for the current package."
   (interactive)
   (compile "go test -v ./..."))
-
-(global-set-key (kbd "C-c t") #'my/go-test)
 
 ;;; ---------------------------------------------------------------------------
 ;;; Python
@@ -277,7 +287,7 @@
 	 "49361d39cd77efa1e363fde9c80aa08e7a3ddaada86bccd90f3205af8733174a" default))
  '(package-selected-packages
    '(bible-gateway consult corfu dired-sidebar go-test magit magit-gitflow
-				   marginalia orderless slime)))
+				   marginalia orderless slime vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
