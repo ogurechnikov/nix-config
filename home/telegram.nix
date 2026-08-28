@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  programs.telegram-desktop = {
-    enable = true;
-  };
+  home.packages = with pkgs; [
+    telegram-desktop
+  ];
 }
