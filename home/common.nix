@@ -18,6 +18,7 @@
     ./stylix-targets.nix
     ./dev.nix
     ./fish.nix
+    ./telegram.nix
   ];
 
   programs.home-manager.enable = true;
