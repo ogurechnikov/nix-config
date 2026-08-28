@@ -10,5 +10,6 @@
     gcc
     gnumake
     libtool
+    gitflow
   ];
 }
