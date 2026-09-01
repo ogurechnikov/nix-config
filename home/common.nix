@@ -19,6 +19,7 @@
     ./dev.nix
     ./fish.nix
     ./telegram.nix
+    ./mpv.nix
   ];
 
   programs.home-manager.enable = true;
