@@ -186,9 +186,9 @@
   :ensure t
   :hook
   (go-mode . eglot-ensure)
-  (go-mode . my/go-mode-setup))
+  (go-mode . go-mode-setup))
 
-(defun my/go-mode-setup ()
+(defun go-mode-setup ()
   "Configure Go buffers."
   (add-hook 'before-save-hook
             'eglot-format
@@ -199,10 +199,12 @@
 ;;; Go tests
 ;;; ---------------------------------------------------------------------------
 
-(defun my/go-test ()
+(defun go-test ()
   "Run Go tests for the current package."
   (interactive)
-  (compile "go test -v ./..."))
+  (compile "go test -v ./...")
+  :bind
+  ("C-c t" . go-test))
 
 ;;; ---------------------------------------------------------------------------
 ;;; Python
@@ -212,9 +214,9 @@
   :ensure nil
   :hook
   (python-mode . eglot-ensure)
-  (python-mode . my/python-mode-setup))
+  (python-mode . python-mode-setup))
 
-(defun my/python-mode-setup ()
+(defun python-mode-setup ()
   "Configure Python buffers."
   (add-hook 'before-save-hook
             'eglot-format
@@ -252,7 +254,7 @@
 ;;; Custom commands
 ;;; ---------------------------------------------------------------------------
 
-(defun my/kill-all-buffers ()
+(defun kill-all-buffers ()
   "Kill all live buffers."
   (interactive)
   (mapc #'kill-buffer (buffer-list)))
