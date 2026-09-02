@@ -21,6 +21,7 @@
     ./telegram.nix
     ./mpv.nix
     ./yazi.nix
+    ./wallpapers.nix
   ];
 
   programs.home-manager.enable = true;
