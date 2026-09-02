@@ -7,6 +7,7 @@
     ./dev/nix-lang.nix
     ./dev/python.nix
     ./dev/qml.nix
+    ./dev/proto.nix
     ./dev/tools.nix
   ];
 }

@@ -207,6 +207,19 @@
   ("C-c t" . go-test))
 
 ;;; ---------------------------------------------------------------------------
+;;; Protocol Buffers
+;;; ---------------------------------------------------------------------------
+
+(use-package protobuf-mode
+  :ensure t
+  :mode "\\.proto\\'"
+  :hook
+  (protobuf-mode . eglot-ensure)
+  :config
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs '(protobuf-mode . ("buf" "lsp" "serve")))))
+
+;;; ---------------------------------------------------------------------------
 ;;; Python
 ;;; ---------------------------------------------------------------------------
 
