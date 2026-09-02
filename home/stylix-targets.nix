@@ -6,5 +6,6 @@
     fuzzel.enable = true;
     firefox.enable = false;
     fish.enable = true;
+    yazi.enable = true;
   };
 }
