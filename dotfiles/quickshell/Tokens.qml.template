@@ -1,0 +1,60 @@
+// Tokens.qml — единая точка правды Material Noir Design System.
+pragma Singleton
+import QtQuick
+
+QtObject {
+    // --- §2 Color: Surface hierarchy ---
+    readonly property color voidColor: "{{base00}}"
+    readonly property color surface: "{{base01}}"
+    readonly property color raised: "{{base02}}"
+    readonly property color active: "{{base07}}"
+
+    // --- §2 Color: Text ---
+    readonly property color textPrimary: "{{base05}}"
+    readonly property color textSecondary: "{{base04}}"
+    readonly property color textMuted: "{{base03}}"
+
+    // --- §2 Color: Semantic ---
+    readonly property color accent: "{{base0D}}"
+    readonly property color accentMuted: "{{base0E}}"
+    readonly property color danger: "{{base08}}"
+    readonly property color warning: "{{base09}}"
+    readonly property color success: "{{base0B}}"
+
+    // --- §2 Divider: low-contrast neutral, не отдельный хекс ---
+    readonly property color divider: Qt.rgba(textPrimary.r, textPrimary.g, textPrimary.b, 0.08)
+
+    // --- §5 Geometry: base unit 4px, ритм 4-8-12-16-20-24-32-40-48-64 ---
+    readonly property int space4: 4
+    readonly property int space8: 8
+    readonly property int space12: 12
+    readonly property int space16: 16
+    readonly property int space20: 20
+    readonly property int space24: 24
+    readonly property int space32: 32
+    readonly property int space40: 40
+    readonly property int space48: 48
+    readonly property int space64: 64
+
+    // --- §5 Radius: architectural 0-4, floating objects 6-10 ---
+    readonly property int radiusArchitectural: 4
+    readonly property int radiusObject: 8
+
+    // --- §9 Motion: три скорости ---
+    readonly property int motionFast: 130      // 100-150ms, середина диапазона
+    readonly property int motionNormal: 200    // 180-220ms
+    readonly property int motionSlow: 275      // 250-300ms
+
+    // --- §4 Typography: scale ---
+    readonly property int textXs: 12   // metadata
+    readonly property int textSm: 13   // secondary UI
+    readonly property int textMd: 14   // base UI
+    readonly property int textLg: 16   // important UI
+    readonly property int textXl: 20   // section
+    readonly property int textXxl: 24  // major
+
+    // --- §4 Typography: weights ---
+    readonly property int weightNormal: 400
+    readonly property int weightEmphasis: 500
+    readonly property int weightStrong: 600
+}
