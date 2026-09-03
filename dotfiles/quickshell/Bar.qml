@@ -9,12 +9,12 @@ PanelWindow {
         right: true
     }
     implicitHeight: 36
-    color: Colors.base00
+    color: Tokens.voidColor
 
     Item {
         anchors.fill: parent
-        anchors.leftMargin: 12
-        anchors.rightMargin: 12
+        anchors.leftMargin: Tokens.space12
+        anchors.rightMargin: Tokens.space12
 
         RowLayout {
             anchors.left: parent.left
@@ -29,13 +29,14 @@ PanelWindow {
         RowLayout {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-			spacing: 12
+            spacing: Tokens.space12
 
-			Keyboard {}
-			
+            Keyboard {}
+
             Text {
                 text: "wifi | 🔔 | ⏻"
-                color: Colors.base05
+                color: Tokens.textPrimary
+                font.pixelSize: Tokens.textMd
             }
         }
     }

@@ -33,7 +33,8 @@ Item {
         id: clockText
         anchors.verticalCenter: parent.verticalCenter
         text: root.time
-        color: Colors.base05
+        color: Tokens.textSecondary
+        font.pixelSize: Tokens.textSm
     }
 
     implicitWidth: clockText.implicitWidth

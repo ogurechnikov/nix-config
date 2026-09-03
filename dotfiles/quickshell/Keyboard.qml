@@ -37,7 +37,8 @@ Item {
         id: label
         anchors.verticalCenter: parent.verticalCenter
         text: root.current
-        color: Colors.base05
+        color: Tokens.textSecondary
+        font.pixelSize: Tokens.textSm
     }
 
     implicitWidth: label.implicitWidth

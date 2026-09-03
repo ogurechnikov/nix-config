@@ -1,5 +1,4 @@
 // Workspaces.qml — индикаторы рабочих столов niri.
-
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
@@ -11,9 +10,7 @@ Item {
 
     Process {
         id: workspaceProcess
-
         command: ["niri", "msg", "-j", "workspaces"]
-
         stdout: StdioCollector {
             id: collector
             onStreamFinished: {
@@ -32,17 +29,16 @@ Item {
 
     RowLayout {
         anchors.verticalCenter: parent.verticalCenter
-        spacing: 6
+        spacing: Tokens.space8
 
         Repeater {
             model: root.workspaces
 
             Rectangle {
-                width: 10
-                height: 10
-                radius: 5
-
-                color: modelData.is_active ? Colors.base0D : Colors.base02
+                width: 6
+                height: 6
+                radius: 3
+                color: modelData.is_active ? Tokens.accent : Tokens.textMuted
             }
         }
     }
