@@ -16,13 +16,9 @@ PanelWindow {
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
     // exclusionMode Ignore — не резервирует пространство на экране,
-    // иначе другие окна "сжимались" бы под высоту launcher,
-    // как это происходит с обычными панелями типа Bar.
+    // иначе другие окна "сжимались" бы под высоту launcher.
     WlrLayershell.exclusionMode: ExclusionMode.Ignore
 
-    // Растягиваем прозрачную "подложку" на весь экран — сама card
-    // внутри позиционируется через anchors.topMargin, а не через
-    // margins самого layer-shell surface.
     anchors {
         top: true
         left: true
@@ -110,12 +106,16 @@ PanelWindow {
                 }
 
                 Keys.onDownPressed: {
-                    if (root.selectedIndex < root.filtered.length - 1)
+                    if (root.selectedIndex < root.filtered.length - 1) {
                         root.selectedIndex++
+                        resultsView.positionViewAtIndex(root.selectedIndex, ListView.Contain)
+                    }
                 }
                 Keys.onUpPressed: {
-                    if (root.selectedIndex > 0)
+                    if (root.selectedIndex > 0) {
                         root.selectedIndex--
+                        resultsView.positionViewAtIndex(root.selectedIndex, ListView.Contain)
+                    }
                 }
                 Keys.onReturnPressed: {
                     root.launch(root.filtered[root.selectedIndex])
@@ -130,15 +130,21 @@ PanelWindow {
                 color: Tokens.divider
             }
 
-            // --- Список результатов ---
-            Repeater {
-                model: root.filtered.slice(0, 8)
+            // --- Список результатов, скроллящийся ---
+            ListView {
+                id: resultsView
+                Layout.fillWidth: true
+                Layout.preferredHeight: Math.min(root.filtered.length, 8) * 32
+                clip: true
+                model: root.filtered
+                currentIndex: root.selectedIndex
+                highlightMoveDuration: Tokens.motionFast
 
                 delegate: Rectangle {
                     required property var modelData
                     required property int index
 
-                    Layout.fillWidth: true
+                    width: resultsView.width
                     height: 32
                     radius: Tokens.radiusArchitectural
                     color: index === root.selectedIndex ? Tokens.raised : "transparent"
