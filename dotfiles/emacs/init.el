@@ -202,9 +202,9 @@
 (defun go-test ()
   "Run Go tests for the current package."
   (interactive)
-  (compile "go test -v ./...")
-  :bind
-  ("C-c t" . go-test))
+  (compile "go test -v ./..."))
+
+(global-set-key (kbd "C-c t") #'go-test)
 
 ;;; ---------------------------------------------------------------------------
 ;;; Protocol Buffers

@@ -5,23 +5,23 @@
   home.stateVersion = "26.05";
 
   imports = [
-    ./emacs.nix
-    ./emacs-theme.nix
-    ./alacritty.nix
-    ./neovim.nix
-    ./niri.nix
+    ./apps/emacs.nix
+    ./theme/emacs-theme.nix
+    ./apps/alacritty.nix
+    ./apps/neovim.nix
+    ./shell/niri.nix
     ./quickshell.nix
-    ./quickshell-theme.nix
-    ./git.nix
-    ./firefox.nix
-    ./fuzzel.nix
-    ./stylix-targets.nix
+    ./theme/quickshell-theme.nix
+    ./shell/git.nix
+    ./apps/firefox.nix
+    ./apps/fuzzel.nix
+    ./theme/stylix-targets.nix
     ./dev.nix
-    ./fish.nix
-    ./telegram.nix
-    ./mpv.nix
-    ./yazi.nix
-    ./wallpapers.nix
+    ./shell/fish.nix
+    ./apps/telegram.nix
+    ./apps/mpv.nix
+    ./apps/yazi.nix
+    ./apps/wallpapers.nix
   ];
 
   programs.home-manager.enable = true;
