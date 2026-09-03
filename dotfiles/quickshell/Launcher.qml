@@ -1,4 +1,5 @@
 // Launcher.qml — поиск и запуск приложений.
+// Появляется по Mod+D через IPC-команду, исчезает после запуска или Escape.
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
@@ -8,17 +9,31 @@ import Quickshell.Wayland
 PanelWindow {
     id: root
 
+    // WlrLayershell.keyboardFocus — критично для launcher.
+    // По умолчанию layer-shell surface НЕ получает клавиатурный
+    // ввод (иначе бар воровал бы фокус у приложений). Launcher —
+    // осознанное исключение, ему нужен полный ввод текста.
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
-    anchors { top: true }
-    margins.top: 120
+    // exclusionMode Ignore — не резервирует пространство на экране,
+    // иначе другие окна "сжимались" бы под высоту launcher,
+    // как это происходит с обычными панелями типа Bar.
+    WlrLayershell.exclusionMode: ExclusionMode.Ignore
 
-    implicitWidth: 480
-    implicitHeight: content.implicitHeight + Tokens.space24 * 2
+    // Растягиваем прозрачную "подложку" на весь экран — сама card
+    // внутри позиционируется через anchors.topMargin, а не через
+    // margins самого layer-shell surface.
+    anchors {
+        top: true
+        left: true
+        right: true
+        bottom: true
+    }
+
     color: "transparent"
-
     visible: false
 
+    // --- Данные ---
     property var allApps: DesktopEntries.applications.values
     property string query: ""
     property var filtered: []
@@ -49,22 +64,24 @@ PanelWindow {
         refilter()
     }
 
-	IpcHandler {
-		target: "launcher"
-
-		function toggle(): void {
-			root.visible = !root.visible
-			if (root.visible) {
-				input.forceActiveFocus()
-			}
-		}
-	}
-
     Component.onCompleted: refilter()
 
+    IpcHandler {
+        target: "launcher"
+
+        function toggle(): void {
+            root.visible = !root.visible
+            if (root.visible) {
+                input.forceActiveFocus()
+            }
+        }
+    }
+
+    // --- Визуальный контейнер (Object geometry: radius 6-10 по §5) ---
     Rectangle {
         id: card
         anchors.top: parent.top
+        anchors.topMargin: 120
         anchors.horizontalCenter: parent.horizontalCenter
         width: 480
         height: content.implicitHeight + Tokens.space24 * 2
@@ -79,6 +96,7 @@ PanelWindow {
             anchors.margins: Tokens.space24
             spacing: Tokens.space16
 
+            // --- Поле ввода ---
             TextInput {
                 id: input
                 Layout.fillWidth: true
@@ -105,12 +123,14 @@ PanelWindow {
                 Keys.onEscapePressed: root.close()
             }
 
+            // Разделитель — линия появляется только когда пространства недостаточно
             Rectangle {
                 Layout.fillWidth: true
                 height: 1
                 color: Tokens.divider
             }
 
+            // --- Список результатов ---
             Repeater {
                 model: root.filtered.slice(0, 8)
 
